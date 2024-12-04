@@ -15,20 +15,22 @@ def add_sum(text):
     return total
 
 def check_do():
-    separated_dict = {}
+    #sum can be added directly during dictionary entry assignment instead of iterating
+    #separated_dict = {}
     l1 = lines.split('do()')
+    fsum = 0
     for l2 in l1:
         if "don't()" in l2:
             temp = l2.split("don't()")
-            separated_dict[temp[0]] = True
-            separated_dict[temp[1]] = False
+            fsum += add_sum(temp[0])
+            
         else:
-            separated_dict[l2] = True
-    
-    fsum = 0
-    for item in separated_dict:
+            fsum += add_sum(l2)
+    '''
+        for item in separated_dict:
         if separated_dict[item]:
             fsum += add_sum(item)
+    '''
 
     print(fsum)
 
